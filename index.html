@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Population Ecology Study Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts for nicer typography -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f4f7f9;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: #2e8b57;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav li {
+      margin: 0.5rem 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffeb3b;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h1, h2, h3 {
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #2e8b57;
+    }
+    section {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    section:nth-child(odd) {
+      animation-delay: 0.2s;
+    }
+    section:nth-child(even) {
+      animation-delay: 0.4s;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .quiz {
+      margin-top: 1rem;
+      background: #e7f4ea;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .quiz button {
+      background: #2e8b57;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .quiz button:hover {
+      background: #246b45;
+    }
+    .hidden {
+      display: none;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Population Ecology Study Guide</h1>
+    <nav>
+      <ul>
+        <li><a href="#objectives">Objectives</a></li>
+        <li><a href="#ecology">Ecology</a></li>
+        <li><a href="#methods">Population Methods</a></li>
+        <li><a href="#growth">Growth Models</a></li>
+        <li><a href="#survivorship">Survivorship</a></li>
+        <li><a href="#human">Human Dynamics</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="container">
+    
+    <!-- Learning Objectives -->
+    <section id="objectives">
+      <h2>Learning Objectives</h2>
+      <ul>
+        <li>Define ecology and population ecology</li>
+        <li>Explain the mark-recapture method to estimate unknown population sizes</li>
+        <li>Discuss assumptions of population models and how violations affect predictions</li>
+        <li>Apply the exponential growth model to predict population growth</li>
+        <li>Understand the logic behind exponential and logistic growth models</li>
+        <li>Analyze species survivorship curves and relate them to ecological traits</li>
+        <li>Relate human population growth to carrying capacity and quality of life</li>
+      </ul>
+    </section>
+    
+    <!-- Ecology and Levels -->
+    <section id="ecology">
+      <h2>Ecology &amp; Levels of Ecology</h2>
+      <p><strong>Ecology</strong> is the study of interactions between organisms and their biotic and abiotic environment.</p>
+      <h3>Levels of Ecology</h3>
+      <ul>
+        <li><strong>Population Ecology:</strong> Studies population sizes and changes over time.</li>
+        <li><strong>Community Ecology:</strong> Investigates species interactions and assemblages.</li>
+        <li><strong>Ecosystem Ecology:</strong> Focuses on energy flow and ecosystem structure.</li>
+        <li><strong>Global Ecology:</strong> Examines how local interactions affect global dynamics.</li>
+      </ul>
+    </section>
+    
+    <!-- Measuring Population Size -->
+    <section id="methods">
+      <h2>Measuring Population Size</h2>
+      <p>Often it is impractical to count every individual. Instead, scientists use the <strong>mark-recapture method</strong>:</p>
+      <ol>
+        <li><strong>Capture 1:</strong> Capture and mark a subset of the population (let this number be <em>s</em>).</li>
+        <li>Release the marked individuals and allow them to mix with the unmarked population.</li>
+        <li><strong>Capture 2:</strong> Capture a new sample (total number <em>n</em>) and count the number of recaptured marked individuals (<em>x</em>).</li>
+      </ol>
+      <p>The estimated population size (<em>N</em>) is given by the formula:</p>
+      <p style="font-size: 1.2rem; font-weight: bold;">N = (s × n) / x</p>
+      <p>This formula is based on the assumption that the proportion of marked individuals in the second capture reflects that in the whole population.</p>
+      <div class="quiz">
+        <h3>Quick Quiz</h3>
+        <p>Suppose you mark 40 individuals, and in the second capture, you catch 50 individuals, of which 10 are marked. What is the estimated population size?</p>
+        <button onclick="revealAnswer('answer1')">Show Answer</button>
+        <p id="answer1" class="hidden">Using the formula: N = (40 × 50) / 10 = 200, so the estimated population size is 200.</p>
+      </div>
+    </section>
+    
+    <!-- Population Growth Models -->
+    <section id="growth">
+      <h2>Population Growth Models</h2>
+      <h3>The Simplest Model</h3>
+      <p>The change in population size over time can be written as:</p>
+      <p style="font-size: 1.2rem; font-weight: bold;">ΔN/Δt = B - D</p>
+      <p>Where:</p>
+      <ul>
+        <li><strong>B:</strong> Number of births (or immigration)</li>
+        <li><strong>D:</strong> Number of deaths (or emigration)</li>
+      </ul>
+      <p>For scaling across populations, we define per capita rates:</p>
+      <ul>
+        <li><strong>Birth rate (b):</strong> Offspring per individual per unit time</li>
+        <li><strong>Death rate (d):</strong> Deaths per individual per unit time</li>
+      </ul>
+      <p>This leads to the per capita growth rate, <em>r</em>, where:</p>
+      <p style="font-size: 1.2rem; font-weight: bold;">r = b - d</p>
+      <p>Thus, the exponential growth model is represented as:</p>
+      <p style="font-size: 1.2rem; font-weight: bold;">ΔN/Δt = rN</p>
+      <div class="quiz">
+        <h3>Interactive Exercise</h3>
+        <p>If a population of 2,500 marmots produces 315 babies and loses 22 adults in one year, calculate <em>r</em>.</p>
+        <button onclick="revealAnswer('answer2')">Show Answer</button>
+        <p id="answer2" class="hidden">r = (315 - 22) / 2500 ≈ 0.1172 per year</p>
+      </div>
+      <h3>Logistic Growth</h3>
+      <p>When resources are limited, population growth slows as it approaches the environment's <strong>carrying capacity (K)</strong>. In the logistic model, birth rates decline and death rates increase as <em>N</em> nears <em>K</em>.</p>
+      <p>This transition from exponential to logistic growth is key to understanding natural population dynamics.</p>
+    </section>
+    
+    <!-- Survivorship -->
+    <section id="survivorship">
+      <h2>Survivorship Curves</h2>
+      <p><strong>Survivorship</strong> is the proportion of individuals surviving to a given age. It is calculated as:</p>
+      <p style="font-size: 1.2rem; font-weight: bold;">Survivorship = (Number of individuals surviving to age) / (Total individuals)</p>
+      <p>Three major types of survivorship curves are often described:</p>
+      <ul>
+        <li><strong>Type I:</strong> High survival through most of life with a steep decline in later years (e.g., many mammals including humans).</li>
+        <li><strong>Type II:</strong> A relatively constant rate of mortality throughout life (e.g., some birds and reptiles).</li>
+        <li><strong>Type III:</strong> High mortality early in life with survivors living much longer (e.g., many fish and invertebrates).</li>
+      </ul>
+      <div class="quiz">
+        <h3>Review Question</h3>
+        <p>Which survivorship curve would you expect in a species that produces a large number of offspring but provides little parental care?</p>
+        <button onclick="revealAnswer('answer3')">Show Answer</button>
+        <p id="answer3" class="hidden">A Type III survivorship curve.</p>
+      </div>
+    </section>
+    
+    <!-- Human Population Dynamics -->
+    <section id="human">
+      <h2>Human Population Dynamics</h2>
+      <p>Humans have experienced dramatic changes in population size. Key points include:</p>
+      <ul>
+        <li>A significant population explosion due to declines in mortality and changes in fertility.</li>
+        <li>The concept of carrying capacity, which suggests there is an upper limit to the population that the environment can sustain.</li>
+        <li>Modern trends in survivorship and quality of life have altered human population dynamics over time.</li>
+      </ul>
+      <p>Interactive video and discussion prompts (e.g., exploring YouTube content) may further enhance understanding.</p>
+    </section>
+    
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Population Ecology Study Guide. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    // JavaScript function to reveal quiz answers
+    function revealAnswer(id) {
+      var answer = document.getElementById(id);
+      if (answer.classList.contains("hidden")) {
+        answer.classList.remove("hidden");
+      } else {
+        answer.classList.add("hidden");
+      }
+    }
+    
+    // Optional: Animate sections when scrolled into view
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, {threshold: 0.2});
+    
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
